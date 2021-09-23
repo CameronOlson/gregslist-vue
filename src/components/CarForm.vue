@@ -80,6 +80,7 @@ import { Car } from '../models/Car.js'
 import { watchEffect } from '@vue/runtime-core'
 import { carsService } from '../services/CarsService.js'
 import Pop from '../utils/Pop.js'
+import { logger } from '../utils/Logger.js'
 export default {
   // REVIEW PROPS
   props: {
@@ -103,6 +104,7 @@ export default {
             await carsService.editCar(editable.value)
           } else {
             await carsService.createCar(editable.value)
+            logger.log('is this coming through on a car create?')
           }
           editable.value = {}
         } catch (error) {
